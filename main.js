@@ -80,3 +80,82 @@ for (const todo of todos) {   //for of
 }
 
 //High order array methods
+todos.forEach(function (todo) {
+    console.log(todo.text);
+});
+
+//same as above using arrows
+todos.forEach((todo) => console.log(todo.text));
+
+const todoText = todos.map(function (todo) {
+    return todo.text;
+});
+
+console.log(todoText);
+
+const todoCompleted = todos.filter(function (todo) {
+    return todo.isCompleted === true;
+}).map(function (todo) { //concatenation of arrays methods
+    return todo.text;
+});
+
+console.log(todoCompleted);
+
+//Conditional logic
+const z = 9;
+const color = z > 10 ? 'red' : 'blue';
+console.log(color);
+
+switch (color) {
+    case 'red':
+        console.log('Color is red');
+        break;
+    case 'blue':
+        console.log('Color is blue');
+        break;
+
+    default:
+        console.log('Color is neither red or blue');
+        break;
+}
+
+//OOP
+function Employee(firstN, lastN, dob) {
+    this.firstN = firstN;
+    this.lastN = lastN;
+    this.dob = new Date(dob);
+}
+
+Employee.prototype.getBirthYear = function () {
+    return this.dob.getFullYear();
+}
+
+Employee.prototype.getFullname = function () {
+    return `${this.firstN} ${this.lastN}`
+}
+
+//Class IES6
+class Personal {
+    constructor(firstN, lastN, dob) {
+        this.firstN = firstN;
+        this.lastN = lastN;
+        this.dob = new Date(dob);
+    }
+    getBirthYear() {
+        return this.dob.getFullYear();
+
+    }
+    getFullname() {
+        return `${this.firstN} ${this.lastN}`
+
+    }
+
+}
+
+//instantiate the object
+const person1 = new Employee('Jane', 'Doe', '3/6/1970');
+const person2 = new Employee('Mary', 'Smith', '11/26/1978');
+const person3 = new Personal('Louis', 'Sanders', '3/6/1989');
+const person4 = new Personal('Bob', 'Dylan', '11/26/1995');
+console.log(person1.getFullname(), person1.getBirthYear(), person2.getFullname(), person2.getBirthYear(), person3.getFullname(), person3.getBirthYear(), person4.getFullname(), person4.getBirthYear());
+
