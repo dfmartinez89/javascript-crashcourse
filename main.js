@@ -159,3 +159,9 @@ const person3 = new Personal('Louis', 'Sanders', '3/6/1989');
 const person4 = new Personal('Bob', 'Dylan', '11/26/1995');
 console.log(person1.getFullname(), person1.getBirthYear(), person2.getFullname(), person2.getBirthYear(), person3.getFullname(), person3.getBirthYear(), person4.getFullname(), person4.getBirthYear());
 
+//DOM Single selectors
+console.log(document.getElementById('my-form')); //old way
+console.log(document.querySelector('h1')); //works as JQuery
+
+//Multiple elements selectors
+console.log(document.querySelectorAll('.item'));
