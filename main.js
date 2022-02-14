@@ -1,3 +1,4 @@
+/*JS basics*/
 //Primitive Data types
 const who = 'John'; //string
 let age = 32; //number
@@ -164,4 +165,46 @@ console.log(document.getElementById('my-form')); //old way
 console.log(document.querySelector('h1')); //works as JQuery
 
 //Multiple elements selectors
-console.log(document.querySelectorAll('.item'));
+const items = document.querySelectorAll('.item');
+
+items.forEach((item) => console.log(item));
+
+//Manipulate the DOM
+const ul = document.querySelector('.items');
+ul.lastElementChild.remove();
+ul.firstElementChild.textContent = 'Hello';
+ul.children[1].innerHTML = '<h1>Traversy</h1>';
+
+//Events
+const btn = document.querySelector('.btn');
+
+btn.addEventListener('mouseout', (e) => {
+    e.preventDefault();
+    document.querySelector('#my-form').style.background = '#ccc';
+})
+
+/*Some example functionality*/
+const myForm = document.querySelector('#my-form');
+const nameInput = document.querySelector('#name');
+const mailInput = document.querySelector('#email');
+const msg = document.querySelector('.msg');
+const userList = document.querySelector('#users');
+
+myForm.addEventListener('submit', onSubmit);
+
+function onSubmit(e) {
+    e.preventDefault();
+    console.log(nameInput.value);
+    if (nameInput.value === '' || mailInput.value === '') {
+        msg.classList.add('error');
+        msg.innerHTML = 'Please enter all fields';
+        setTimeout(() => msg.remove(), 2000);
+    } else {
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(`${nameInput.value} : ${mailInput.value}`));
+
+        userList.appendChild(li);
+        nameInput.value = '';
+        mailInput.value = '';
+    }
+}
