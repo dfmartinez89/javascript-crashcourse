@@ -23,8 +23,13 @@ function getPost() {
     }, 1000);
 }
 
-const button = document.querySelector('.btn')
-button.addEventListener('click', (e) => {
-    e.preventDefault();
-    getPost();
-})
+function createPost(post, callback){
+    setTimeout(() => {
+        posts.push(post);
+        callback();
+    }, 2000);
+}
+
+getPost();
+
+createPost({title:'Post Four', body:'This is post four'}, getPost)
